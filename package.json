@@ -1,0 +1,35 @@
+{
+    "name": "parcel-project-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "homepage": "https://RomanVoznyy/final-project-js",
+    "scripts": {
+        "dev": "parcel src/*.html --no-source-maps",
+        "build": "parcel build src/*.html",
+        "predeploy": "npm run build -- --public-url /final-project-js/",
+        "deploy": "gh-pages -d dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RomanVoznyy/final-project-js"
+    },
+    "keywords": [],
+    "author": "GO IT Team #3",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/RomanVoznyy/final-project-js/issues"
+    },
+    "devDependencies": {
+        "gh-pages": "^3.1.0",
+        "parcel-bundler": "^1.12.4",
+        "parcel-plugin-clean-dist": "0.0.6",
+        "parcel-plugin-handlebars-precompile": "^1.0.2",
+        "posthtml-include": "^1.6.0",
+        "prettier": "2.1.2",
+        "sass": "^1.26.9"
+    },
+    "dependencies": {
+        "lodash.debounce": "^4.0.8"
+    }
+}
