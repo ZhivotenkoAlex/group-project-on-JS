@@ -50,5 +50,3 @@ function toDetails() {
     refs.homeRef.classList.remove('is-active');
     refs.headerRef.classList.add('page-details');
 }
-
-console.log(1);
