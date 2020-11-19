@@ -5,3 +5,23 @@
 @import "./utils/container";
 
 @import "./utils/is-hidden";
+
+
+// Header
+@import "./common/_page-header.scss";
+
+// One movie card
+@import "./common/movie-card";
+
+// Modal movie card
+@import "./common/modal-movie-card";
+
+// Footer
+@import "./common/page-footer";
+
+@import "./utils/visually-hidden";
+
+@import "./common/_page-header.scss";
+@import "./common/hbs-movies";
+
+
