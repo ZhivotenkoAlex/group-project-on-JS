@@ -2,7 +2,7 @@
   <div class="header-background">
     <div class="container">
       <div class="header-box">
-        <a href="#" class="header-logo-box" id="logo">
+        <a href="index.html" class="header-logo-box" id="logo">
           <svg class="header-logo-svg" width="24px" height="24px">
             <use href="./images/symbol-defs.svg#icon-film"></use>
           </svg>
@@ -11,7 +11,7 @@
 
         <nav class="nav">
           <div class="nav-home">
-            <a href="#" class="nav-link is-active" id="home">Home</a>
+            <a href="index.html" class="nav-link is-active" id="home">Home</a>
           </div>
           <div class="nav-library">
             <a href="#" class="nav-link" id="library">My Library</a>
@@ -27,6 +27,8 @@
               id="query"
               type="text"
               placeholder="Поиск фильмов"
+              autocomplete="off"
+              minlength="1"
             />
 
             <button class="header-form-button" type="submit">
@@ -39,8 +41,9 @@
           </div>
         </form>
 
-        <p class="search-error" id="search-error">
-          Search result not successful. Enter the correct movie name and
+        <p class="search-error is-hidden" id="search-error">
+          Search result not successful. Enter the correct movie name and try
+          again.
         </p>
       </div>
 
