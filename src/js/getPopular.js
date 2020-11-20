@@ -1,17 +1,10 @@
-import trendTpl from '../templates/movies.hbs';
 import ApiMovieService from './apiService';
-import refs from './get-refs';
-console.log(trendTpl)
+import markupMovies from './renderMarkup';
+
 const apiMovieService = new ApiMovieService();
 
-
-function markupPopularMovies(movies) {
-    refs.filmContainer.insertAdjacentHTML('beforeend', trendTpl(movies));
-    
-}
-
 function showPopular(url) {
-  return apiMovieService.showResult(url).then(markupPopularMovies);
+  return apiMovieService.showResult(url).then(markupMovies);
 }
 
-showPopular('trending/movie/day');
+showPopular(apiMovieService.trending);

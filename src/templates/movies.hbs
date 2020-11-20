@@ -7,9 +7,11 @@
 
     <div class="info">
         <h3 class="info-title">{{title}}</h3>
-        <p class="info-container">
-            <span class="info-list">{{#each genre_ids}} {{name}} {{/each}}| {{release_date}}</span>
-        </p>
+        <ul class="info-container">
+            {{#each genre_ids}} <li class="info-list">{{name}}</li>{{/each}}
+            <li> | </li>
+            <li class="info-list">{{release_date}}</li>
+        </ul>
     </div>
 </li>
 {{/each}}

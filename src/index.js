@@ -4,7 +4,9 @@ import "./sass/main.scss";
 
 
 import './js/page-header.js';
-import './js/getPopular.js'
+import './js/searchMovies.js';
+import './js/getPopular.js';
+import './js/searchGenres.js';
 
 
-import './js/page-header.js';
+

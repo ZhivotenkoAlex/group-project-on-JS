@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 
   font-weight: 500;
   font-size: 12px;
@@ -19,6 +19,7 @@ body {
 
 a {
   text-decoration: none;
+  outline: none;
 }
 
 ul {
@@ -48,4 +49,16 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+main {
+  min-height: calc(100vh - 230px - 70px);
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media screen and (min-width: 767px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
