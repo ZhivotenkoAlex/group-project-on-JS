@@ -8,3 +8,4 @@ import './js/getPopular.js'
 
 
 import './js/page-header.js';
+import './js/localStorage.js'
