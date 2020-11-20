@@ -1,0 +1,17 @@
+<ul class="paginator paginator-list-pages">
+    <li class="item paginator-low-left">
+        {{!-- <svg class="arow-paginator">
+            <use href="./rows-paginator.svg#icon-arrow-left"></use>
+        </svg> --}}
+    </li>
+    <li class="item paginator-page paginator-page-first paginator-current">{{first}}</li>
+    <li class="item paginator-page">...</li>
+    {{#each range}}
+    <li class="item paginator-page">
+        <a class="paginator-page-link" href="/">{{this}}</a>
+    </li>
+    {{/each}}
+    <li class="item paginator-page">...</li>
+    <li class="item paginator-page">{{last}}</li>
+    <li class="item paginator-low-right"></li>
+</ul>

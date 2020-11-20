@@ -1,27 +1,27 @@
-@import "./utils/variables";
-@import "./utils/basic-settings";
-@import "./utils/breakpoints";
-@import "./utils/placeholders";
-@import "./utils/container";
+@import './utils/variables';
+@import './utils/basic-settings';
+@import './utils/breakpoints';
+@import './utils/placeholders';
+@import './utils/container';
 
-@import "./utils/is-hidden";
-
+@import './utils/is-hidden';
 
 // Header
-@import "./common/_page-header.scss";
+@import './common/_page-header.scss';
 
 // One movie card
-@import "./common/movie-card";
+@import './common/movie-card';
 
 // Modal movie card
-@import "./common/modal-movie-card";
+@import './common/modal-movie-card';
+
+//paginator
+@import './common/paginator';
 
 // Footer
-@import "./common/page-footer";
+@import './common/page-footer';
 
-@import "./utils/visually-hidden";
+@import './utils/visually-hidden';
 
-@import "./common/_page-header.scss";
-@import "./common/hbs-movies";
-
-
+@import './common/_page-header.scss';
+@import './common/hbs-movies';
