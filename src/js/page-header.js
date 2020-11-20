@@ -1,13 +1,8 @@
-const refs = {
-    headerRef: document.querySelector('header'),
-    logoRef: document.querySelector('#logo'),
-    homeRef: document.querySelector('#home'),
-    libraryRef: document.querySelector('#library'),
-}
+import refs from './get-refs';
 
-refs.logoRef.addEventListener('click', toHome)
-refs.homeRef.addEventListener('click', toHome)
-refs.libraryRef.addEventListener('click', toLibrary)
+refs.logoRef.addEventListener('click', toHome);
+refs.homeRef.addEventListener('click', toHome);
+refs.libraryRef.addEventListener('click', toLibrary);
 
 function toHome() {
 
@@ -24,7 +19,6 @@ function toHome() {
     }
 
     refs.homeRef.classList.add('is-active');
-    
 }
 
 function toLibrary() {
@@ -50,3 +44,5 @@ function toDetails() {
     refs.homeRef.classList.remove('is-active');
     refs.headerRef.classList.add('page-details');
 }
+
+
