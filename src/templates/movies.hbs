@@ -1,15 +1,23 @@
 {{#each this}}
 <li class="movies-item">
     <div class="poster">
+        {{#if poster_path}}
         <img class="image" src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{poster_path}}" alt="{{title}}"
             data-id="{{id}}" />
+        {{else}}
+        <img class="image"
+            src="https://i.piccy.info/i9/fc046d9be07e646a8a7cdd694510a1c2/1605899438/11518/1406275/1605fake_image.jpg"
+            alt="{{title}}" data-id="{{id}}" />
+        {{/if}}
     </div>
 
     <div class="info">
         <h3 class="info-title">{{title}}</h3>
-        <p class="info-container">
-            <span class="info-list">{{#each genre_ids}} {{name}} {{/each}}| {{release_date}}</span>
-        </p>
+        <ul class="info-container">
+            {{#each genre_ids}} <li class="info-list">{{name}}</li>{{/each}}
+            <li> | </li>
+            <li class="info-list">{{release_date}}</li>
+        </ul>
     </div>
 </li>
 {{/each}}
