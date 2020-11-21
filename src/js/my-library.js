@@ -23,7 +23,8 @@ function onWatchedLinkClick() {
   const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
   
     if (filmsWatchedIds !== null) {
-      for (id of filmsWatchedIds) {
+        for (id of filmsWatchedIds) {
+            const id = apiSearchServise.id;
         apiSearchServise.fetchMoviesId().then()
       };
       // здесь задача 4, 5, 6
@@ -31,7 +32,7 @@ function onWatchedLinkClick() {
     //
     }
 
-    
+
 
 function onQueueLinkClick() {
     const filmsLocalStorageQueue = localStorage.getItem("queue")

@@ -20,3 +20,5 @@ import './js/searchGenres.js';
 import './js/modal-movie-card.js';
 
 import './js/localStorage.js';
+
+import './js/my-library.js'
