@@ -1,9 +1,7 @@
-
 // import "./css/styles.css";
 import './sass/main.scss';
 
-
-import "./sass/main.scss";
+import './sass/main.scss';
 
 // import "./sass/my-library.scss";
 
@@ -19,9 +17,6 @@ import './js/searchMovies.js';
 import './js/getPopular.js';
 import './js/searchGenres.js';
 
+// import './js/localStorage.js';
 
-
-
-import './js/localStorage.js'
-
-
+import './js/switch-page.js';

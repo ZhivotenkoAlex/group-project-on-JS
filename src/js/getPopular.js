@@ -14,8 +14,8 @@ function showPopular(url) {
 async function paginationSet() {
   await showPopular(apiMovieService.trending);
 
-  paginator(
-    5, //apiMovieService.getPage(),
+  await paginator(
+    apiMovieService.getPage(),
     apiMovieService.total_result,
     apiMovieService.trending,
   );
