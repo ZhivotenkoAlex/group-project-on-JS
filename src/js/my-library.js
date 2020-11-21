@@ -10,16 +10,16 @@ import markupMovies from './renderMarkup';
 import localStorage from './localStorage.js'
 
 const refs = {
-  watchedBtn: document.querySelector('[data-set="watched-btn"]'),
-  queueBtn: document.querySelector('[data-set="queue-btn"]')  
+  watchedLink: document.querySelector('[data-set="watched-link"]'),
+  queueLink: document.querySelector('[data-set="queue-link"]')  
 }
 
 const apiSearchService = new ApiService();
 
-refs.watchedBtn.addEventListener('click', onWatchedBtnClick)
-refs.queueBtn.addEventListener('click', onQueueBtnClick)
+refs.watchedLink.addEventListener('click', onWatchedLinkClick)
+refs.queueLink.addEventListener('click', onQueueLinkClick)
 
-function onWatchedBtnClick() {
+function onWatchedLinkClick() {
   const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
   
     if (filmsWatchedIds !== null) {
@@ -31,7 +31,9 @@ function onWatchedBtnClick() {
     //
     }
 
-function onQueueBtnClick() {
+    
+
+function onQueueLinkClick() {
     const filmsLocalStorageQueue = localStorage.getItem("queue")
     const filmsQueueIds = filmsLocalStorageQueue.map(Number)
     
