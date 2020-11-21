@@ -30,10 +30,7 @@
   align-items: center;
 }
 
-.paginator-page-first {
-}
-
-.paginator-current,
+.paginator-current > a,
 .paginator-page:hover,
 .paginator-page-link:hover {
   background: $primaryOrangeColor;
@@ -49,8 +46,6 @@
   line-height: 1.33;
 
   color: $primaryBlackColor;
-}
-.paginator-page-last {
 }
 
 .paginator-low-left {
@@ -73,5 +68,5 @@
 }
 
 .paginator .item:not(:last-child) {
-  margin-left: 2px;
+  margin-right: 2px;
 }

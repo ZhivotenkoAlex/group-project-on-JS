@@ -1,18 +1,41 @@
-console.log('pagination start');
+import refs from './get-refs.js';
 
 import pagTmp from '../templates/pagination-tmp.hbs';
+import pagTmp20 from '../templates/paginator-20-tmp.hbs';
 
-var pagination = require('pagination');
+import PagTest from './apiPaginator';
 
-var boostrapPaginator = new pagination.TemplatePaginator({
-  prelink: '/',
-  current: 12,
-  rowsPerPage: 200,
-  totalResult: 10020,
-  slashSeparator: true,
-  template: pagTmp,
-});
+const PER_PAGE = 20;
 
-const pageNumEl = document.querySelector('.js-pagination');
+// const pagination = require('pagination');
 
-pageNumEl.innerHTML = boostrapPaginator.render();
+export default function setPaginatorStart(currentPage, totalPages, url = '/') {
+  // const boostrapPaginator = new pagination.TemplatePaginator(
+  //   paginatotInit(currentPage, totalPages),
+  // );
+  // console.log(boostrapPaginator.preparePreLink('prelinkABC'));
+  // console.log(boostrapPaginator.getPaginationData());
+  // console.log(Object.values(boostrapPaginator));
+  // console.log(Object.keys(boostrapPaginator));
+  const paginator = new PagTest({
+    currentPage: currentPage,
+    prelink: url,
+    totalPages: totalPages,
+    templateTmp: pagTmp,
+    perPage: PER_PAGE,
+  });
+
+  refs.paginatorElRef.innerHTML = paginator.render();
+}
+
+// function paginatotInit(currentPage, totalPages) {
+//   const paginatorObj = {
+//     prelink: '/?pag',
+//     current: currentPage,
+//     rowsPerPage: PER_PAGE,
+//     totalResult: totalPages,
+//     slashSeparator: false,
+//     template: totalPages > PER_PAGE * 5 ? pagTmp : pagTmp20,
+//   };
+//   return paginatorObj;
+// }
