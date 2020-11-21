@@ -13,11 +13,14 @@ async function showMovieCard(event) {
       cardMovieTemplate(
         await fetchMovie(
           event.target.closest('.movies-item').getAttribute('id'),
+          
         ),
       ),
     )
     .show();
+   
 }
+
 
 async function fetchMovie(id) {
   const response = await fetch(
@@ -25,3 +28,5 @@ async function fetchMovie(id) {
   );
   return await response.json();
 }
+
+export default {fetchMovie, showMovieCard}

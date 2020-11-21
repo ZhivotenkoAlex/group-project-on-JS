@@ -2,16 +2,8 @@
 //     <button type="button" data-set="to-queue-btn">Add TO queue</button>
 import ApiMovieService from './apiService.js'
 import movies from '../templates/movies.hbs'
-
-
-
-const refs = {
-  filmContainer: document.querySelector('.js-film-container'),
-  toWatchedBtn: document.querySelector('[data-name="watched"]'),
-  toQueueBtn: document.querySelector('[data-name="queue"]'),
-
-   
-}
+import { fetchMovie } from '../js/modal-movie-card'
+import refs from './get-refs.js'
 
 
 const apiMovieService = new ApiMovieService
@@ -19,40 +11,38 @@ const apiMovieService = new ApiMovieService
 
 
 
-refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
+
+// refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
 // refs.toQueueBtn.addEventListener('click', onQueueBtnClick)
 
-refs.filmContainer.addEventListener('click', onImgClick)
+refs.filmContainer.addEventListener('click', openModalForId) //только получаем id картинки, а в локал сторедж слушатель на кнопку 
+// refs.filmContainer.addEventListener('click', onBtnClick) //слушатель нужен для кнопки
 
 
-function renderImgCard(genres) {
-  const markupImgCard = movies(genres)
-  refs.galeryList.insertAdjacentHTML('beforeend', markupImgCard)
-}
 
-
-function onImgClick(evt) {
-  console.log('открыть модалку');
+async function openModalForId(evt) {
+   let currentId = await evt.target.closest('.movies-item').getAttribute('id')
+  console.log(currentId);
   
+    onBtnClick(currentId);
+   
+  }
 
-  if (onWatchedBtnClick) {
-    let currentIdCardFilmWatched = evt.path[0].dataset.id
-    console.log(currentIdCardFilmWatched);
-
-    localStorage.setItem('watched', '[]')
-
-    let newIdCardFilmWatched = JSON.parse(localStorage.getItem('watched'))
+  //сделать для каждой кнопки
+  function onBtnClick() {
+  console.log(currentId);
+  
+   localStorage.setItem('watched', '[]')
+   let newIdCardFilmWatched = JSON.parse(localStorage.getItem('watched')) 
+    
     console.log(newIdCardFilmWatched);
     
-    newIdCardFilmWatched.push(currentIdCardFilmWatched) ;
-    
+     let card = newIdCardFilmWatched.unshift(currentId) ;
+    console.log(card);
+   
     localStorage.setItem('watched', JSON.stringify(newIdCardFilmWatched))
     
   }
-
-
-
-}
 
 
 
