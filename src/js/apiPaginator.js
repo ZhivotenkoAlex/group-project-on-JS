@@ -19,14 +19,14 @@ export default class ApiPaginator {
 
   getRange() {
     const totalPage = Math.ceil(this.totalPage / this.perPage);
-
+    // console.log(this);
     if (this.current > totalPage) {
       return [{ num: 1, active: true }];
     }
 
     this.last = totalPage;
 
-    if (this.current < 5) {
+    if (this.current < 5 && totalPage < 5) {
       //less than 5 page
 
       let arr = [];
@@ -62,12 +62,24 @@ export default class ApiPaginator {
           active: i === 0 ? true : false,
         });
       }
-    } else if (totalPage - this.current >= 2) {
+    } else if (this.current === 2) {
+      rangeTemp.push({ num: this.current + 3, active: false });
+      rangeTemp.push({ num: this.current + 2, active: false });
+      rangeTemp.push({ num: this.current + 1, active: false });
+      rangeTemp.push({ num: this.current, active: true });
+      rangeTemp.push({ num: this.current - 1, active: false });
+    } else if (totalPage - this.current >= 2 && this.current != 1) {
       rangeTemp.push({ num: this.current + 2, active: false });
       rangeTemp.push({ num: this.current + 1, active: false });
       rangeTemp.push({ num: this.current, active: true });
       rangeTemp.push({ num: this.current - 1, active: false });
       rangeTemp.push({ num: this.current - 2, active: false });
+    } else {
+      rangeTemp.push({ num: this.current + 4, active: false });
+      rangeTemp.push({ num: this.current + 3, active: false });
+      rangeTemp.push({ num: this.current + 2, active: false });
+      rangeTemp.push({ num: this.current + 1, active: false });
+      rangeTemp.push({ num: this.current, active: true });
     }
 
     return rangeTemp.reverse();
