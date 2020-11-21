@@ -17,6 +17,12 @@ import './js/searchMovies.js';
 import './js/getPopular.js';
 import './js/searchGenres.js';
 
+
 // import './js/localStorage.js';
 
 import './js/switch-page.js';
+
+import './js/modal-movie-card.js';
+
+
+
