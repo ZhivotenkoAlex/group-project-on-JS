@@ -13,20 +13,21 @@ export default class ApiPaginator {
     this.previous = this.current - 1;
     this.next = this.current + 1;
     this.range = this.getRange();
-
+    // console.log(this);
     return this.template(this);
   }
 
   getRange() {
     const totalPage = Math.ceil(this.totalPage / this.perPage);
-
+    const prelinkTem = this.prelink.split('&')[0];
+    // console.log(prelinkTem);
     if (this.current > totalPage) {
-      return [{ num: 1, active: true }];
+      return [{ num: 1, active: true, prelink: prelinkTem }];
     }
 
     this.last = totalPage;
 
-    if (this.current < 5) {
+    if (this.current < 5 && totalPage < 5) {
       //less than 5 page
 
       let arr = [];
@@ -34,6 +35,7 @@ export default class ApiPaginator {
         arr.push({
           num: i + 1,
           active: i + 1 === this.current ? true : false,
+          prelink: prelinkTem,
         });
       }
       return arr;
@@ -49,25 +51,87 @@ export default class ApiPaginator {
         rangeTemp.push({
           num: this.current - i,
           active: i === 0 ? true : false,
+          prelink: prelinkTem,
         });
       }
     } else if (totalPage - this.current === 1) {
       left = 3;
       right = 1;
-      rangeTemp.push({ num: totalPage, active: false });
+      rangeTemp.push({ num: totalPage, active: false, prelink: prelinkTem });
 
       for (let i = 0; i <= left; i++) {
         rangeTemp.push({
           num: this.current - i,
           active: i === 0 ? true : false,
+          prelink: prelinkTem,
         });
       }
-    } else if (totalPage - this.current >= 2) {
-      rangeTemp.push({ num: this.current + 2, active: false });
-      rangeTemp.push({ num: this.current + 1, active: false });
-      rangeTemp.push({ num: this.current, active: true });
-      rangeTemp.push({ num: this.current - 1, active: false });
-      rangeTemp.push({ num: this.current - 2, active: false });
+    } else if (this.current === 2) {
+      rangeTemp.push({
+        num: this.current + 3,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 2,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 1,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({ num: this.current, active: true, prelink: prelinkTem });
+      rangeTemp.push({
+        num: this.current - 1,
+        active: false,
+        prelink: prelinkTem,
+      });
+    } else if (totalPage - this.current >= 2 && this.current != 1) {
+      rangeTemp.push({
+        num: this.current + 2,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 1,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({ num: this.current, active: true, prelink: prelinkTem });
+      rangeTemp.push({
+        num: this.current - 1,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current - 2,
+        active: false,
+        prelink: prelinkTem,
+      });
+    } else {
+      rangeTemp.push({
+        num: this.current + 4,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 3,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 2,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({
+        num: this.current + 1,
+        active: false,
+        prelink: prelinkTem,
+      });
+      rangeTemp.push({ num: this.current, active: true, prelink: prelinkTem });
     }
 
     return rangeTemp.reverse();
