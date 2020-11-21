@@ -20,8 +20,7 @@ refs.watchedBtn.addEventListener('click', onWatchedBtnClick)
 refs.queueBtn.addEventListener('click', onQueueBtnClick)
 
 function onWatchedBtnClick() {
-  const filmsLocalStorageWatched = localStorage.getItem("watched");
-  const filmsWatchedIds = filmsLocalStorageWatched.map(Number);
+  const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
   
     if (filmsWatchedIds !== null) {
       for (id of filmsWatchedIds) {
