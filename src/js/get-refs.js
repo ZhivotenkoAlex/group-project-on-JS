@@ -1,4 +1,4 @@
-import { doc } from "prettier";
+import { doc } from 'prettier';
 
 const refs = {
   headerRef: document.querySelector('header'),
@@ -9,6 +9,7 @@ const refs = {
   searchFormRef: document.querySelector('#search'),
   searchErrorRef: document.querySelector('#search-error'),
   sectionMoviesRef: document.querySelector('#section-movies'),
+  paginatorElRef: document.querySelector('.js-pagination'),
 };
 
 export default refs;
