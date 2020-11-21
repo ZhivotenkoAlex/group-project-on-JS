@@ -33,6 +33,7 @@
     "dependencies": {
         "basiclightbox": "^5.0.3",
         "lodash.debounce": "^4.0.8",
+        "lodash.range": "^3.2.0",
         "pagination": "^0.4.6"
     }
 }

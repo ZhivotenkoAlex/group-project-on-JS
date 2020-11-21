@@ -33,9 +33,11 @@
         <p class="modal-movie-about">About</p>
         <p class="modal-movie-descript">{{overview}}</p>
         <div class="modal-movie-button-wrapper">
-            <button data-name='watched' class="modal-movie-button modal-left-button" type="button">add to
+            <button data-name="watched" class="modal-movie-button modal-left-button button-is-active" type="button"
+                onClick="onWatchedBtnClick()">delete from
                 watched</button>
-            <button data-name='queue' class="modal-movie-button" type="button">add to queue</button>
+            <button data-name="queue" class="modal-movie-button button-is-active" type="button"
+                onClick="onQueueBtnClick()">delete from queue</button>
         </div>
     </div>
 </article>
