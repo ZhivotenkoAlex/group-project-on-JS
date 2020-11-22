@@ -332,3 +332,19 @@
     color: $primaryBlackColor;
   }
 }
+
+// Плашечка рейтинга в карточке одного фильма вкладки библиотека
+.movie-popularity {
+  display: inline-block;
+  margin-left: 10px;
+
+  width: 36px;
+  height: 16px;
+
+  text-align: center;
+  vertical-align: text-bottom;
+
+  color: $primaryWhiteColor;
+  background-color: $primaryOrangeColor;
+  border-radius: 5px;
+}
