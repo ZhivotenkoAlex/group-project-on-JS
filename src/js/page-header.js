@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import refs from './get-refs';
 import { onWatchedLinkClick, onQueueLinkClick } from './my-library.js';
 
@@ -27,6 +28,8 @@ function toLibrary() {
   if (det) {
     refs.headerRef.classList.remove('page-details');
   }
+
+  document.querySelector('.js-pagination').remove();
 
   refs.homeRef.classList.remove('is-active');
   refs.headerRef.classList.add('page-my-library');
