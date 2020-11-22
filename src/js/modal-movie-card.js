@@ -5,20 +5,40 @@ import './get-refs';
 import refs from './get-refs';
 import cardMovieTemplate from '../templates/modal-tmp.hbs';
 
+// import onWatchedBtnClick from './localStorage.js';
+
+const modalRefs = {
+  lightbox: document.querySelector('.modal-movie-lightbox'),
+  closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
+  overlayModal: document.querySelector('.modal-movie-overlay'),
+};
+
 refs.filmContainer.addEventListener('click', showMovieCard);
 
 async function showMovieCard(event) {
-  basicLightbox
-    .create(
-      cardMovieTemplate(
-        await fetchMovie(
-          event.target.closest('.movies-item').getAttribute('id'),
-          
-        ),
-      ),
-    )
-    .show();
-   
+
+  openCloseModal();
+
+  modalRefs.overlayModal.insertAdjacentHTML(
+    'beforeend',
+    cardMovieTemplate(
+      await fetchMovie(event.target.closest('.movies-item').getAttribute('id')),
+    ),
+  );
+
+  // const refs = {
+  //   //   filmContainer: document.querySelector('.js-film-container'),
+  //   toWatchedBtn: document.querySelector('[data-name="watched"]'),
+  //   //   toQueueBtn: document.querySelector('[data-name="queue"]'),
+
+  //   //   img: document.querySelector('.image'),
+  // };
+
+  // refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick);
+  // refs.toQueueBtn.addEventListener('click', onQueueBtnClick);
+
+  // refs.filmContainer.addEventListener('click', onImgClick);
+
 }
 
 
@@ -29,4 +49,36 @@ async function fetchMovie(id) {
   return await response.json();
 }
 
+function openCloseModal() {
+  modalRefs.lightbox.classList.toggle('modal-is-open');
+
+  if (modalRefs.lightbox.classList.contains('modal-is-open')) {
+    window.addEventListener('keydown', pressEsc);
+    modalRefs.closeModalBtn.addEventListener('click', openCloseModal);
+    modalRefs.overlayModal.addEventListener('click', onOverlayClick);
+  } else {
+    window.removeEventListener('keydown', pressEsc);
+    modalRefs.closeModalBtn.removeEventListener('click', openCloseModal);
+    modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
+  }
+}
+
+function pressEsc(evt) {
+  if (
+    modalRefs.lightbox.classList.contains('modal-is-open') &&
+    evt.code === 'Escape'
+  ) {
+    openCloseModal();
+  }
+}
+
+function onOverlayClick(evt) {
+  if (evt.target.closest('.modal-movie-wrapper')) {
+    return;
+  }
+
+  openCloseModal();
+}
+
 export default {fetchMovie, showMovieCard}
+
