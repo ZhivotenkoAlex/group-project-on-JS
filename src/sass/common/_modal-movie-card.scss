@@ -225,3 +225,8 @@
     background-color: $buttonOrangeColor;
   }
 }
+
+.modal-movie-button.button-is-active {
+  background-color: $primaryOrangeColor;
+  color: $primaryWhiteColor;
+}
