@@ -1,9 +1,14 @@
 // import ApiMovieService from './apiService.js'
+
+import movies from '../templates/movies.hbs'
+
 // import movies from '../templates/movies.hbs'
+
 // import { fetchMovie } from '../js/modal-movie-card'
 // import refs from './get-refs.js'
 
 // // const apiMovieService = new ApiMovieService
+
 
 const refs = {
   filmContainer: document.querySelector('.js-film-container'),
@@ -13,10 +18,12 @@ const refs = {
 
 // const apiMovieService = new ApiMovieService
 
-//refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
-// refs.toQueueBtn.addEventListener('click', onQueueBtnClick)
 
-//refs.filmContainer.addEventListener('click', onImgClick)
+// //refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
+// // refs.toQueueBtn.addEventListener('click', onQueueBtnClick)
+
+// //refs.filmContainer.addEventListener('click', onImgClick)
+
 
 function renderImgCard(genres) {
   const markupImgCard = movies(genres);
@@ -35,7 +42,9 @@ function onImgClick(evt) {
     let newIdCardFilmWatched = JSON.parse(localStorage.getItem('watched'));
     console.log(newIdCardFilmWatched);
 
+
     newIdCardFilmWatched.push(currentIdCardFilmWatched);
+
 
     localStorage.setItem('watched', JSON.stringify(newIdCardFilmWatched));
   }
@@ -61,9 +70,10 @@ function onQueueBtnClick() {
   // отрендерить в библиотеку
 }
 
-// function onWatchedBtnClick() {
-//   console.log('click');
+
+//  // отрендерить в библиотеку
 // }
+
 
 function getFilmsWatched(id) {
   //получить значение id фильма
@@ -115,5 +125,6 @@ function getFilmsWatched(id) {
 //     if (index === -1) {
 //      filmsQueue.push(id)
 //     }
+
 
 //    return localStorage.setItem('queue', JSON.stringify(filmsQueue))

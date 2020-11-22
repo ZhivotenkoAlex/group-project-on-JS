@@ -108,10 +108,12 @@ function onQueueBtnClick() {
     toQueueBtn.classList.add('button-is-active');
     toQueueBtn.innerHTML = 'delete from queue';
   } else {
+
     delQ();
     toQueueBtn.classList.remove('button-is-active');
     toQueueBtn.innerHTML = 'add to queue';
   }
+
 }
 
 function saveW() {
@@ -127,9 +129,11 @@ function saveW() {
   const i = oldId.indexOf(newId);
 
   if (i === -1) {
+
     oldId.push(newId);
     console.log('добавил');
   } else {
+
     oldId.splice(i, 1);
     console.log('удалил');
   }
@@ -159,9 +163,11 @@ function saveQ() {
   //   console.log('удалил');
   // }
 
+
   // вывести в LS
   localStorage.setItem('queue', JSON.stringify(oldId));
 }
+
 
 function delQ() {
   let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
@@ -176,3 +182,4 @@ function delQ() {
 }
 
 export { fetchMovie, showMovieCard };
+
