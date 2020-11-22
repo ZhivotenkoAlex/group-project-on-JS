@@ -90,19 +90,8 @@ function onWatchedBtnClick() {
   console.log(id);
   console.log('watched');
   const btnWatched = libraryRefs.toWatchedBtn
- 
-  if (btnWatched.innerHTML === "add to watched") {
-     saveW()
-    btnWatched.classList.add("button-is-active")
-    btnWatched.innerHTML = "delete from watched"
-   
-  
+ saveW()
 
-  } else {
-    btnWatched.classList.remove("button-is-active")
-    btnWatched.innerHTML = "add to watched"
-    
-    }
 }
 
 function onQueueBtnClick(){
@@ -126,6 +115,7 @@ function onQueueBtnClick(){
 function saveW() {
   let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
   console.log(newId);
+  const btnWatched = libraryRefs.toWatchedBtn
   
    if (localStorage.getItem("watched") === null) {
           localStorage.setItem("watched", "[]")
@@ -135,13 +125,25 @@ function saveW() {
   console.log(oldId);
    const i = oldId.indexOf(newId)
   
+
+
   if (i === -1) {
     oldId.push(newId)
+
+    btnWatched.classList.remove("button-is-active")
+    btnWatched.innerHTML = "delete from watched"
     console.log("добавил");
+
+
   }  else {
     oldId.splice(i, 1);
+
+    btnWatched.classList.add("button-is-active")
+    btnWatched.innerHTML = "add to watched"
     console.log('удалил');
   }
+
+
  
 
   // вывести в LS
@@ -152,7 +154,7 @@ function saveW() {
 
 function saveQ() {
   let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
-  console.log(newId);
+  const toQueueBtn = libraryRefs.toQueueBtn
   
    if (localStorage.getItem("queue") === null) {
           localStorage.setItem("queue", "[]")
@@ -161,12 +163,19 @@ function saveQ() {
   let oldId = JSON.parse(localStorage.getItem("queue"))
   const i = oldId.indexOf(newId)
 
-    if (i === -1) {
+  if (i === -1) {
     oldId.push(newId)
-    console.log("добавил");
+  
+    toQueueBtn.classList.remove("button-is-active")
+    toQueueBtn.innerHTML = "delete from queue"
+   
+   
     } else {
     oldId.splice(i, 1);
-    console.log('удалил');
+    
+   
+    toQueueBtn.classList.add("button-is-active")
+    toQueueBtn.innerHTML = "add to queue"
   }
 
 
@@ -176,5 +185,26 @@ function saveQ() {
 }
 
 
+
+function viewW() {
+  const vievWL = localStorage.getItem("watched")
+
+  if (vievWL !== null) {
+    const parseWatched = JSON.parse(localStorage.getItem("watched"))
+    console.log(parseWatched);
+
+    const id = parseWatched.map((id)  => {
+      Number(id)
+      console.log(id);
+    
+  //  сделать рендер карточки фильма по айди
+     
+
+   })
+  }
+  
+}
+
+viewW()
 
 export default { fetchMovie, showMovieCard };
