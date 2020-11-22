@@ -116,7 +116,6 @@ function onQueueBtnClick(){
      
   
   } else {
-    delQ()
     toQueueBtn.classList.remove("button-is-active")
     toQueueBtn.innerHTML = "add to queue"
     
@@ -139,7 +138,7 @@ function saveW() {
   if (i === -1) {
     oldId.push(newId)
     console.log("добавил");
-  } else {
+  }  else {
     oldId.splice(i, 1);
     console.log('удалил');
   }
@@ -165,29 +164,14 @@ function saveQ() {
     if (i === -1) {
     oldId.push(newId)
     console.log("добавил");
-    }
-    
-  //   else {
-  //   oldId.splice(i, 1);
-  //   console.log('удалил');
-  // }
+    } else {
+    oldId.splice(i, 1);
+    console.log('удалил');
+  }
 
 
   // вывести в LS
   localStorage.setItem("queue", JSON.stringify(oldId))
-
-}
-
-function delQ() {
-  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
-  let oldId = JSON.parse(localStorage.getItem("queue"))
-  const i = oldId.indexOf(newId)
-
-  if (i) {
-    console.log(i);
-    oldId.splice(i, 1);
-    console.log('удалил');
-  }
 
 }
 
