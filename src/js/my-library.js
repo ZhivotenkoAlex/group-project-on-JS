@@ -2,10 +2,15 @@ import ApiService from './apiService';
 import markupMovies from './renderMarkup';
 import localStorage from './localStorage.js'
 
+
+
 const refs = {
-  watchedLink: document.querySelector('[data-set="watched-link"]'),
-  queueLink: document.querySelector('[data-set="queue-link"]')  
+  libraryClick: document.querySelector('.librarry-filter'),
+  watchedLink: document.querySelector('.watched-link'),
+  queueLink: document.querySelector('.queue-link')  
 }
+
+console.log()
 
 // новый экземпляр
 const apiSearchServise = new ApiService();
@@ -16,33 +21,32 @@ refs.watchedLink.addEventListener('click', onWatchedLinkClick);
 refs.queueLink.addEventListener('click', onQueueLinkClick);
 
 function onWatchedLinkClick() {
-  refs.watchedLink.classList.add('link-is-active')
+  refs.watchedLink.classList.add('is-active')
   const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
-  
   if (filmsWatchedIds !== null) {
     for (id of filmsWatchedIds) {
-      const id = apiSearchServise.id;
+      apiSearchServise.id = id;
       apiSearchServise.fetchMoviesId(addWatchedMovie).then(markupMovies)
     };
   }
 }
 
 let watchedMovies = [];
-  
   function addWatchedMovie(r) {
     watchedMovies.push(r);
     console.log(watchedMovies);
     return watchedMovies;
   }
 
+console.log(watchedMovies);
 
 function onQueueLinkClick() {
-  refs.watchedLink.classList.remove('link-is-active')
-  refs.queueLink.classList.add('link-is-active')
+  refs.watchedLink.classList.remove('is-active')
+  refs.queueLink.classList.add('is-active')
   const filmsQueueIds = JSON.parse(localStorage.getItem("queue")).map(Number);
   if (filmsQueueIds !== null) {
     for (id of filmsQueueIds) {
-      const id = apiSearchServise.id;
+      apiSearchServise.id = id;
       apiSearchServise.fetchMoviesId(addMovieinQueue).then(markupMovies)
     };
   }
@@ -52,7 +56,6 @@ let moviesInQueue = [];
   
   function addMovieinQueue(r) {
     moviesInQueue.push(r);
-    console.log(moviesInQueue);
     return moviesInQueue;
   }
 
