@@ -19,10 +19,10 @@ const apiMovieService = new ApiMovieService
 
 
 
-refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
+//refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick)
 // refs.toQueueBtn.addEventListener('click', onQueueBtnClick)
 
-refs.filmContainer.addEventListener('click', onImgClick)
+//refs.filmContainer.addEventListener('click', onImgClick)
 
 
 function renderImgCard(genres) {

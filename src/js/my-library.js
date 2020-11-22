@@ -14,34 +14,47 @@ const refs = {
   queueLink: document.querySelector('[data-set="queue-link"]')  
 }
 
-const apiSearchService = new ApiService();
+const apiSearchServise = new ApiService();
 
 refs.watchedLink.addEventListener('click', onWatchedLinkClick)
-refs.queueLink.addEventListener('click', onQueueLinkClick)
+//refs.watchedLink.addEventListener('click', )
+//refs.queueLink.addEventListener('click', onQueueLinkClick)
+
+//function onWatchedLinkClick() {
+  //const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
+  
+    //if (filmsWatchedIds !== null) {
+       // for (id of filmsWatchedIds) {
+         //   const id = apiSearchServise.id;
+        //apiSearchServise.fetchMoviesId().then()
+      //};
+      // здесь задача 4, 5, 6
+       // }
+    //
+   // }
+
+
+
+//function onQueueLinkClick() {
+    //const filmsLocalStorageQueue = localStorage.getItem("queue")
+    //const filmsQueueIds = filmsLocalStorageQueue.map(Number)
+    
+    //if (filmsQueueIds !== null) {
+      //  for (id of filmsQueueIds) {
+        // здесь задача 4, 5, 6
+      //  }
+    //apiSearchServise.fetchMoviesId().then()
+//}
+//}
+let a = [];
 
 function onWatchedLinkClick() {
-  const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
-  
-    if (filmsWatchedIds !== null) {
-        for (id of filmsWatchedIds) {
-            const id = apiSearchServise.id;
-        apiSearchServise.fetchMoviesId().then()
-      };
-      // здесь задача 4, 5, 6
-        }
-    //
-    }
-
-
-
-function onQueueLinkClick() {
-    const filmsLocalStorageQueue = localStorage.getItem("queue")
-    const filmsQueueIds = filmsLocalStorageQueue.map(Number)
-    
-    if (filmsQueueIds !== null) {
-        for (id of filmsQueueIds) {
-        // здесь задача 4, 5, 6
-        }
-    //apiSearchServise.fetchMoviesId().then(console.log)
+    apiSearchServise.id = 643882;
+    apiSearchServise.fetchMoviesId().then(b).then(markupMovies)
 }
+
+function b(r) {
+    a.push(r);
+    console.log(a);
+    return a;
 }
