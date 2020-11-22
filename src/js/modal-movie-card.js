@@ -37,6 +37,8 @@ async function showMovieCard(event) {
 
   libraryRefs.toWatchedBtn.addEventListener('click', onWatchedBtnClick);
   libraryRefs.toQueueBtn.addEventListener('click', onQueueBtnClick);
+
+  b();
 }
 
 async function fetchMovie(id) {
@@ -46,7 +48,7 @@ async function fetchMovie(id) {
   return await response.json();
 }
 
-function openCloseModal() {
+async function openCloseModal() {
   
 
   modalRefs.lightbox.classList.toggle('modal-is-open');
@@ -62,7 +64,9 @@ function openCloseModal() {
     libraryRefs.toWatchedBtn.removeEventListener('click', onWatchedBtnClick);
     libraryRefs.toQueueBtn.removeEventListener('click', onQueueBtnClick);
 
-    removeOldElement(document.querySelector('.modal-movie-wrapper'));
+     removeOldElement(document.querySelector('.modal-movie-wrapper'));
+
+    
   }
 }
 
@@ -121,7 +125,7 @@ function saveW() {
   }
 
   let oldId = JSON.parse(localStorage.getItem('watched'));
-  console.log(oldId);
+  console.log('watched',  oldId);
 
    const i = oldId.indexOf(newId)
   
@@ -224,4 +228,34 @@ viewW()
 
 export default { fetchMovie, showMovieCard };
 
+function b() {
+  const watched = document.querySelector('[data-name="watched"]');
+  const queue = document.querySelector('[data-name="queue"]');
 
+  
+  const w = JSON.parse(localStorage.getItem('watched')); 
+  const q = JSON.parse(localStorage.getItem('queue'));
+   
+  let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
+
+  console.log(w);
+  console.log(q);
+
+
+  if (w === null || !w.includes(id)) {
+    watched.classList.remove('button-is-active');
+    watched.textContent = 'add to watched';
+  } else {
+    watched.classList.add('button-is-active');
+    watched.textContent = 'delete from watched';
+  }
+
+    if (q === null || !q.includes(id)) {
+    queue.classList.remove('button-is-active');
+    queue.textContent = 'add to queue';
+  } else {
+    queue.classList.add('button-is-active');
+    queue.textContent = 'delete from queue';
+  }
+}
+ 

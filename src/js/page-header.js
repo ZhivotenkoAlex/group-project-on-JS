@@ -49,6 +49,8 @@ function toLibrary() {
   document
     .querySelector('.queue-link')
     .addEventListener('click', onQueueLinkClick);
+  
+  isResults()
 }
 
 function toDetails() {
@@ -64,7 +66,7 @@ function toDetails() {
 }
 
 
-function isResults() {
+export default function isResults() {
   const w = JSON.parse(localStorage.getItem('watched')); 
   const q = JSON.parse(localStorage.getItem('queue'));
 
@@ -78,11 +80,10 @@ function isResults() {
   }
 
   if (q === null || q.length === 0) {
-    console.log('qqqq', q);
+    
     refs.noResults.classList.add('visible');
   } else {
     refs.noResults.classList.remove('visible');
   }
 }
 
-isResults()

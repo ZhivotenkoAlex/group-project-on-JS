@@ -2,6 +2,7 @@ import ApiService from './apiService';
 import markupMovies from './renderMarkup';
 import { fetchMovie } from './modal-movie-card.js';
 import libraryTpl from '../templates/movies.hbs';
+import isResults from './page-header.js'
 
 import commonRefs from './get-refs';
 // import localStorage from './localStorage.js'; modal-movie-card.js
@@ -39,6 +40,8 @@ async function onWatchedLinkClick() {
 }
 
 async function onQueueLinkClick() {
+  isResults()
+
   const refs = {
     libraryClick: document.querySelector('.librarry-filter'),
     watchedLink: document.querySelector('.watched-link'),
