@@ -21,19 +21,12 @@ async function onWatchedLinkClick() {
   };
 
   refs.watchedLink.classList.add('is-active');
-
   const filmsWatchedIds = JSON.parse(localStorage.getItem('watched')).map(
     Number,
   );
 
   const moviesList = [];
-
-
-function onWatchedLinkClick() {
-  refs.watchedLink.classList.add('is-active')
-  const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
   //const filmsWatchedIds = JSON.parse(localStorage.getItem("watched"))
-
 
   if (filmsWatchedIds !== null) {
     for (const id of filmsWatchedIds) {
@@ -54,9 +47,7 @@ async function onQueueLinkClick() {
   refs.watchedLink.classList.remove('is-active');
   refs.queueLink.classList.add('is-active');
 
-  const filmsInQueueIds = JSON.parse(localStorage.getItem('queue')).map(
-    Number,
-  );
+  const filmsInQueueIds = JSON.parse(localStorage.getItem('queue')).map(Number);
 
   const moviesInQueueList = [];
 
