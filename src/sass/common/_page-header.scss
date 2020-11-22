@@ -30,16 +30,16 @@
   max-width: 1024px;
   height: 230px;
 
-  background-image: url("../images/home320_x1.jpg");
+  background-image: url('../images/home320_x1.jpg');
   background-position: center;
   background-repeat: no-repeat;
 
   @media screen and (min-width: 320px) {
-    background-image: url("../images/home768_x1.jpg");
+    background-image: url('../images/home768_x1.jpg');
   }
 
   @media screen and (min-width: 768px) {
-    background-image: url("../images/home1024_x1.jpg");
+    background-image: url('../images/home1024_x1.jpg');
   }
 
   &-background {
@@ -214,14 +214,14 @@
 // ... my library ...
 
 .header.page-my-library {
-  background-image: url("../images/my-library320_x1.jpg");
+  background-image: url('../images/my-library320_x1.jpg');
 
   @media screen and (min-width: 320px) {
-    background-image: url("../images/my-library768_x1.jpg");
+    background-image: url('../images/my-library768_x1.jpg');
   }
 
   @media screen and (min-width: 768px) {
-    background-image: url("../images/my-library1024_x1.jpg");
+    background-image: url('../images/my-library1024_x1.jpg');
   }
 
   .home-search {
@@ -287,11 +287,11 @@
 // ... page details ...
 
 .header.page-details {
-  background-image: url("../images/Rectangle320_x1.jpg");
+  background-image: url('../images/Rectangle320_x1.jpg');
   background-position: 75%;
 
   @media screen and (min-width: 320px) {
-    background-image: url("../images/Rectangle1024_x1.jpg");
+    background-image: url('../images/Rectangle1024_x1.jpg');
   }
 
   .home-search {
@@ -300,5 +300,35 @@
 
   .librarry-filter {
     display: none;
+  }
+}
+
+// Главные кнопки библиотеки
+
+.library-button {
+  @extend %primaryButton;
+  padding: 15px 38px 13px 38px;
+  color: $primaryWhiteColor;
+  transition: background-color $transition;
+
+  &:hover,
+  &:focus {
+    color: $primaryOrangeColor;
+    border: 1px solid $primaryOrangeColor;
+  }
+}
+
+.watched-link {
+  margin-right: 15px;
+}
+
+.library-button-is-active {
+  background-color: $primaryOrangeColor;
+  border: none;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+
+  &:hover,
+  &:focus {
+    color: $primaryBlackColor;
   }
 }
