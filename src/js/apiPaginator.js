@@ -19,8 +19,26 @@ export default class ApiPaginator {
 
   getRange() {
     const totalPage = Math.ceil(this.totalPage / this.perPage);
-    const prelinkTem = this.prelink.split('&')[0];
-    // console.log(prelinkTem);
+
+    console.log('prelink in getRange ', this.prelink);
+
+    const prelinkTemAll = this.prelink.split('&');
+    let prelinkTem = this.prelink.split('&')[0];
+
+    this.prelink = prelinkTem;
+
+    if (prelinkTemAll.length === 3) {
+      console.log('3 lenght linc parameter');
+      const q = prelinkTemAll.filter(word => word.includes('query'))[0];
+      if (q) {
+        prelinkTem = prelinkTem + '&' + q;
+        this.prelink = prelinkTem;
+      }
+    }
+
+    console.log(prelinkTemAll);
+    console.log(prelinkTem);
+
     if (this.current > totalPage) {
       return [{ num: 1, active: true, prelink: prelinkTem }];
     }

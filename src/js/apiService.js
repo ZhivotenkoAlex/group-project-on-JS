@@ -101,7 +101,7 @@ export default class ApiMovieService {
   }
 
   get search() {
-    return this.searchUrl + `&query=${this.searchQuery}&page=${this.page}`;
+    return this.searchUrl + `&page=${this.page}&query=${this.searchQuery}`;
   }
 
   get trending() {
