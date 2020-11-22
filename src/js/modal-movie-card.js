@@ -1,6 +1,3 @@
-import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
-import * as basicLightbox from 'basiclightbox';
-
 import './get-refs';
 import refs from './get-refs';
 import cardMovieTemplate from '../templates/modal-tmp.hbs';
@@ -60,6 +57,7 @@ function openCloseModal() {
     window.removeEventListener('keydown', pressEsc);
     modalRefs.closeModalBtn.removeEventListener('click', openCloseModal);
     modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
+    removeOldElement(document.querySelector('.modal-movie-wrapper'));
   }
 }
 
@@ -78,6 +76,13 @@ function onOverlayClick(evt) {
   }
 
   openCloseModal();
+}
+
+
+function removeOldElement(element) {
+  if (element) {
+    element.remove();
+  }
 }
 
 export default {fetchMovie, showMovieCard}
