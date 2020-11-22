@@ -1,5 +1,5 @@
 import refs from './get-refs';
-import { onWatchedLinkClick, onQueueLinkClick } from './my-library.js';
+// import { onWatchedLinkClick, onQueueLinkClick } from './my-library.js';
 
 refs.logoRef.addEventListener('click', toHome);
 refs.homeRef.addEventListener('click', toHome);
