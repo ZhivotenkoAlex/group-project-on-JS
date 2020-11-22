@@ -88,6 +88,7 @@ function onWatchedBtnClick() {
   let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(id);
   console.log('watched');
+
   const btnWatched = libraryRefs.toWatchedBtn;
 
   if (btnWatched.innerHTML === 'add to watched') {
@@ -98,6 +99,7 @@ function onWatchedBtnClick() {
     btnWatched.classList.remove('button-is-active');
     btnWatched.innerHTML = 'add to watched';
   }
+
 }
 
 function onQueueBtnClick() {
@@ -120,42 +122,67 @@ function saveW() {
   let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(newId);
 
-  if (localStorage.getItem('watched') === null) {
-    localStorage.setItem('watched', '[]');
+  const btnWatched = libraryRefs.toWatchedBtn
+  
+   if (localStorage.getItem("watched") === null) {
+          localStorage.setItem("watched", "[]")
+
   }
 
   let oldId = JSON.parse(localStorage.getItem('watched'));
   console.log(oldId);
-  const i = oldId.indexOf(newId);
+
+   const i = oldId.indexOf(newId)
+  
+
 
   if (i === -1) {
+    oldId.push(newId)
 
-    oldId.push(newId);
-    console.log('добавил');
-  } else {
+    btnWatched.classList.remove("button-is-active")
+    btnWatched.innerHTML = "delete from watched"
+    console.log("добавил");
 
+
+  }  else {
     oldId.splice(i, 1);
+
+    btnWatched.classList.add("button-is-active")
+    btnWatched.innerHTML = "add to watched"
     console.log('удалил');
   }
+
 
   // вывести в LS
   localStorage.setItem('watched', JSON.stringify(oldId));
 }
 
 function saveQ() {
-  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
-  console.log(newId);
 
-  if (localStorage.getItem('queue') === null) {
-    localStorage.setItem('queue', '[]');
+  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
+  const toQueueBtn = libraryRefs.toQueueBtn
+  
+   if (localStorage.getItem("queue") === null) {
+          localStorage.setItem("queue", "[]")
   }
-
-  let oldId = JSON.parse(localStorage.getItem('queue'));
-  const i = oldId.indexOf(newId);
+  
+  let oldId = JSON.parse(localStorage.getItem("queue"))
+  const i = oldId.indexOf(newId)
 
   if (i === -1) {
-    oldId.push(newId);
-    console.log('добавил');
+    oldId.push(newId)
+  
+    toQueueBtn.classList.remove("button-is-active")
+    toQueueBtn.innerHTML = "delete from queue"
+   
+   
+    } else {
+    oldId.splice(i, 1);
+    
+   
+    toQueueBtn.classList.add("button-is-active")
+    toQueueBtn.innerHTML = "add to queue"
+
   }
 
   //   else {
@@ -182,4 +209,28 @@ function delQ() {
 }
 
 export { fetchMovie, showMovieCard };
+
+function viewW() {
+  const vievWL = localStorage.getItem("watched")
+
+  if (vievWL !== null) {
+    const parseWatched = JSON.parse(localStorage.getItem("watched"))
+    console.log(parseWatched);
+
+    const id = parseWatched.map((id)  => {
+      Number(id)
+      console.log(id);
+    
+  //  сделать рендер карточки фильма по айди
+     
+
+   })
+  }
+  
+}
+
+viewW()
+
+export default { fetchMovie, showMovieCard };
+
 

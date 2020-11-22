@@ -28,6 +28,13 @@ async function onWatchedLinkClick() {
 
   const moviesList = [];
 
+
+function onWatchedLinkClick() {
+  refs.watchedLink.classList.add('is-active')
+  const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
+  const filmsWatchedIds = JSON.parse(localStorage.getItem("watched"))
+
+
   if (filmsWatchedIds !== null) {
     for (const id of filmsWatchedIds) {
       moviesList.push(await fetchMovie(id));
