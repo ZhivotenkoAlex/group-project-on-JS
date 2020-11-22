@@ -1,9 +1,9 @@
 import galleryItems from './gallery-items.js';
 
-const galleryContainer = document.querySelectorAll(".footer-container");
+const galleryContainer = document.querySelector(".team-link");
 const modal = document.querySelector(".js-lightbox");
 const modalImg = document.querySelector(".lightbox__image");
-// const modalContent = document.querySelector(".lightbox__image");
+const modalContent = document.querySelector(".lightbox__image");
 const overlay = document.querySelector(".lightbox__overlay")
 const modalBtnClose = document.querySelector(".lightbox__button");
 const modalBtnRight = document.querySelector(".scroll-right");
