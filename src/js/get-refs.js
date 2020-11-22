@@ -10,8 +10,6 @@ const refs = {
   searchErrorRef: document.querySelector('#search-error'),
   sectionMoviesRef: document.querySelector('#section-movies'),
   paginatorElRef: document.querySelector('.js-pagination'),
-  toWatchedBtn: document.querySelector('[data-name="watched"]'),
-  toQueueBtn: document.querySelector('[data-name="queue"]'),
   modal: document.querySelector('.modal')
 };
 
