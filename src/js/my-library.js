@@ -20,7 +20,8 @@ async function onWatchedLinkClick() {
     queueLink: document.querySelector('.queue-link'),
   };
 
-  refs.watchedLink.classList.add('is-active');
+  refs.queueLink.classList.remove('library-button-is-active');
+  refs.watchedLink.classList.add('library-button-is-active');
   const filmsWatchedIds = JSON.parse(localStorage.getItem('watched')).map(
     Number,
   );
@@ -44,8 +45,8 @@ async function onQueueLinkClick() {
     queueLink: document.querySelector('.queue-link'),
   };
 
-  refs.watchedLink.classList.remove('is-active');
-  refs.queueLink.classList.add('is-active');
+  refs.watchedLink.classList.remove('library-button-is-active');
+  refs.queueLink.classList.add('library-button-is-active');
 
   const filmsInQueueIds = JSON.parse(localStorage.getItem('queue')).map(Number);
 
