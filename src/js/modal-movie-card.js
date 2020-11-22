@@ -89,32 +89,16 @@ function onWatchedBtnClick() {
   console.log(id);
   console.log('watched');
 
-  const btnWatched = libraryRefs.toWatchedBtn;
-
-  if (btnWatched.innerHTML === 'add to watched') {
     saveW();
-    btnWatched.classList.add('button-is-active');
-    btnWatched.innerHTML = 'delete from watched';
-  } else {
-    btnWatched.classList.remove('button-is-active');
-    btnWatched.innerHTML = 'add to watched';
-  }
-
+   
 }
 
 function onQueueBtnClick() {
-  const toQueueBtn = libraryRefs.toQueueBtn;
+  
 
-  if (toQueueBtn.innerHTML === 'add to queue') {
     saveQ();
-    toQueueBtn.classList.add('button-is-active');
-    toQueueBtn.innerHTML = 'delete from queue';
-  } else {
+   
 
-    delQ();
-    toQueueBtn.classList.remove('button-is-active');
-    toQueueBtn.innerHTML = 'add to queue';
-  }
 
 }
 
