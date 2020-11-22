@@ -1,6 +1,11 @@
 <article class="modal-movie-wrapper" id="{{id}}">
     <div class="card-poster-wrapper">
+        {{#if poster_path}}
         <img src="https://image.tmdb.org/t/p/w1280{{poster_path}}" class="modal-movie-poster" />
+        {{else}}
+        <img src="https://i.piccy.info/i9/fc046d9be07e646a8a7cdd694510a1c2/1605899438/11518/1406275/1605fake_image.jpg"
+            class="modal-movie-poster" />
+        {{/if}}
     </div>
     <div class="modal-movie-information">
         <h2 class="modal-movie-title">{{title}}</h2>
