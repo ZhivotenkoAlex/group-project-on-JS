@@ -2,12 +2,17 @@ import './get-refs';
 import refs from './get-refs';
 import cardMovieTemplate from '../templates/modal-tmp.hbs';
 
-// import onWatchedBtnClick from './localStorage.js';
+import { onQueueBtnClick, onWatchedBtnClick } from './localStorage.js';
 
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
   closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
   overlayModal: document.querySelector('.modal-movie-overlay'),
+};
+
+const libraryRefs = {
+  toWatchedBtn: '',
+  toQueueBtn: '',
 };
 
 refs.filmContainer.addEventListener('click', showMovieCard);
@@ -22,18 +27,11 @@ async function showMovieCard(event) {
     ),
   );
 
-  // const refs = {
-  //   //   filmContainer: document.querySelector('.js-film-container'),
-  //   toWatchedBtn: document.querySelector('[data-name="watched"]'),
-  //   //   toQueueBtn: document.querySelector('[data-name="queue"]'),
+  libraryRefs.toWatchedBtn = document.querySelector('[data-name="watched"]');
+  libraryRefs.toQueueBtn = document.querySelector('[data-name="queue"]');
 
-  //   //   img: document.querySelector('.image'),
-  // };
-
-  // refs.toWatchedBtn.addEventListener('click', onWatchedBtnClick);
-  // refs.toQueueBtn.addEventListener('click', onQueueBtnClick);
-
-  // refs.filmContainer.addEventListener('click', onImgClick);
+  libraryRefs.toWatchedBtn.addEventListener('click', onWatchedBtnClick);
+  libraryRefs.toQueueBtn.addEventListener('click', onQueueBtnClick);
 }
 
 async function fetchMovie(id) {
@@ -54,6 +52,9 @@ function openCloseModal() {
     window.removeEventListener('keydown', pressEsc);
     modalRefs.closeModalBtn.removeEventListener('click', openCloseModal);
     modalRefs.overlayModal.removeEventListener('click', onOverlayClick);
+    libraryRefs.toWatchedBtn.removeEventListener('click', onWatchedBtnClick);
+    libraryRefs.toQueueBtn.removeEventListener('click', onQueueBtnClick);
+
     removeOldElement(document.querySelector('.modal-movie-wrapper'));
   }
 }
