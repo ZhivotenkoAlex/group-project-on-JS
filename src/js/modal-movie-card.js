@@ -18,6 +18,11 @@ const libraryRefs = {
 refs.filmContainer.addEventListener('click', showMovieCard);
 
 async function showMovieCard(event) {
+  
+  if (event.target.tagName !== 'IMG') {
+    return
+  }
+
   openCloseModal();
 
   modalRefs.overlayModal.insertAdjacentHTML(
@@ -42,6 +47,8 @@ async function fetchMovie(id) {
 }
 
 function openCloseModal() {
+  
+
   modalRefs.lightbox.classList.toggle('modal-is-open');
 
   if (modalRefs.lightbox.classList.contains('modal-is-open')) {

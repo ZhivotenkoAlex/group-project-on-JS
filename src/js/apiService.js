@@ -31,7 +31,7 @@ export default class ApiMovieService {
         this.incrementPage();
 
         this.setTotalResult(total_results);
-
+        console.log(results);
         return results;
       });
   }

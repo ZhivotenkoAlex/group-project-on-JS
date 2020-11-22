@@ -4,3 +4,14 @@
   visibility: hidden;
   transform: translate(-50%, -50%) scale(0);
 }
+
+.is-hidden-pagination {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  user-select: none;
+  pointer-events: none;
+}
