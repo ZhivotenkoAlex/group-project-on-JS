@@ -34,6 +34,8 @@ function toLibrary() {
 
   refs.filmContainer.innerHTML = '';
 
+  onWatchedLinkClick();
+
   document
     .querySelector('.watched-link')
     .addEventListener('click', onWatchedLinkClick);
