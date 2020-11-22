@@ -82,115 +82,97 @@ function removeOldElement(element) {
   }
 }
 
-
 //  local storage
 
 function onWatchedBtnClick() {
- let id = document.querySelector('.modal-movie-wrapper').getAttribute('id')
+  let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(id);
   console.log('watched');
-  const btnWatched = libraryRefs.toWatchedBtn
- 
-  if (btnWatched.innerHTML === "add to watched") {
-     saveW()
-    btnWatched.classList.add("button-is-active")
-    btnWatched.innerHTML = "delete from watched"
-   
-  
+  const btnWatched = libraryRefs.toWatchedBtn;
 
+  if (btnWatched.innerHTML === 'add to watched') {
+    saveW();
+    btnWatched.classList.add('button-is-active');
+    btnWatched.innerHTML = 'delete from watched';
   } else {
-    btnWatched.classList.remove("button-is-active")
-    btnWatched.innerHTML = "add to watched"
-    
-    }
+    btnWatched.classList.remove('button-is-active');
+    btnWatched.innerHTML = 'add to watched';
+  }
 }
 
-function onQueueBtnClick(){
- 
-  const toQueueBtn = libraryRefs.toQueueBtn
- 
-  if (toQueueBtn.innerHTML === "add to queue") {
-    saveQ()
-    toQueueBtn.classList.add("button-is-active")
-    toQueueBtn.innerHTML = "delete from queue"
-     
-  
+function onQueueBtnClick() {
+  const toQueueBtn = libraryRefs.toQueueBtn;
+
+  if (toQueueBtn.innerHTML === 'add to queue') {
+    saveQ();
+    toQueueBtn.classList.add('button-is-active');
+    toQueueBtn.innerHTML = 'delete from queue';
   } else {
-    delQ()
-    toQueueBtn.classList.remove("button-is-active")
-    toQueueBtn.innerHTML = "add to queue"
-    
-         
-    }
+    delQ();
+    toQueueBtn.classList.remove('button-is-active');
+    toQueueBtn.innerHTML = 'add to queue';
+  }
 }
 
 function saveW() {
-  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
+  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(newId);
-  
-   if (localStorage.getItem("watched") === null) {
-          localStorage.setItem("watched", "[]")
+
+  if (localStorage.getItem('watched') === null) {
+    localStorage.setItem('watched', '[]');
   }
-  
-  let oldId = JSON.parse(localStorage.getItem("watched"))
+
+  let oldId = JSON.parse(localStorage.getItem('watched'));
   console.log(oldId);
-   const i = oldId.indexOf(newId)
-  
+  const i = oldId.indexOf(newId);
+
   if (i === -1) {
-    oldId.push(newId)
-    console.log("добавил");
+    oldId.push(newId);
+    console.log('добавил');
   } else {
     oldId.splice(i, 1);
     console.log('удалил');
   }
- 
 
   // вывести в LS
-  localStorage.setItem("watched", JSON.stringify(oldId))
-
-
+  localStorage.setItem('watched', JSON.stringify(oldId));
 }
 
 function saveQ() {
-  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
+  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(newId);
-  
-   if (localStorage.getItem("queue") === null) {
-          localStorage.setItem("queue", "[]")
-  }
-  
-  let oldId = JSON.parse(localStorage.getItem("queue"))
-  const i = oldId.indexOf(newId)
 
-    if (i === -1) {
-    oldId.push(newId)
-    console.log("добавил");
-    }
-    
+  if (localStorage.getItem('queue') === null) {
+    localStorage.setItem('queue', '[]');
+  }
+
+  let oldId = JSON.parse(localStorage.getItem('queue'));
+  const i = oldId.indexOf(newId);
+
+  if (i === -1) {
+    oldId.push(newId);
+    console.log('добавил');
+  }
+
   //   else {
   //   oldId.splice(i, 1);
   //   console.log('удалил');
   // }
 
-
   // вывести в LS
-  localStorage.setItem("queue", JSON.stringify(oldId))
-
+  localStorage.setItem('queue', JSON.stringify(oldId));
 }
 
 function delQ() {
-  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id')
-  let oldId = JSON.parse(localStorage.getItem("queue"))
-  const i = oldId.indexOf(newId)
+  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
+  let oldId = JSON.parse(localStorage.getItem('queue'));
+  const i = oldId.indexOf(newId);
 
   if (i) {
     console.log(i);
     oldId.splice(i, 1);
     console.log('удалил');
   }
-
 }
 
-
-
-export default { fetchMovie, showMovieCard };
+export { fetchMovie, showMovieCard };
