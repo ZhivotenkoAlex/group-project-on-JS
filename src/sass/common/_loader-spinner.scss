@@ -1,16 +1,12 @@
-html {
-  height: 100%;
-}
+// .bodyLoader {
+//   background-image: radial-gradient(
+//     circle farthest-corner at center,
+//     #3c4b57 0%,
+//     #1c262b 100%
+//   );
+// }
 
-body {
-  background-image: radial-gradient(
-    circle farthest-corner at center,
-    #3c4b57 0%,
-    #1c262b 100%
-  );
-}
-
-.spinner {
+.loader {
   position: absolute;
   top: calc(50% - 32px);
   left: calc(50% - 32px);
@@ -18,6 +14,8 @@ body {
   height: 64px;
   border-radius: 50%;
   perspective: 800px;
+  opacity: 0;
+  pointer-events: none;
 
   &.is-open {
     opacity: 1;
@@ -25,7 +23,7 @@ body {
   }
 }
 
-.spin {
+.inner {
   position: absolute;
   box-sizing: border-box;
   width: 100%;
@@ -33,25 +31,25 @@ body {
   border-radius: 50%;
 }
 
-.spin.one {
+.inner.one {
   left: 0%;
   top: 0%;
   animation: rotate-one 1s linear infinite;
-  border-bottom: 3px solid #efeffa;
+  border-bottom: 3px solid #ff6b08;
 }
 
-.spin.two {
+.inner.two {
   right: 0%;
   top: 0%;
   animation: rotate-two 1s linear infinite;
-  border-right: 3px solid #efeffa;
+  border-right: 3px solid #ff6b08;
 }
 
-.spin.three {
+.inner.three {
   right: 0%;
   bottom: 0%;
   animation: rotate-three 1s linear infinite;
-  border-top: 3px solid #efeffa;
+  border-top: 3px solid #ff6b08;
 }
 
 @keyframes rotate-one {

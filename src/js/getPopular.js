@@ -1,15 +1,19 @@
 import ApiMovieService from './apiService';
 import markupMovies from './renderMarkup';
-
+// import loaderSpinnerToggle from './loader-spinner';
 import paginator from './paginator';
 
 const apiMovieService = new ApiMovieService();
 
 function showPopular(url) {
+
   return apiMovieService.showResult(url).then(r => {
+    
     markupMovies(r);
   });
 }
+
+
 
 async function paginationSet() {
   await showPopular(apiMovieService.trending);
