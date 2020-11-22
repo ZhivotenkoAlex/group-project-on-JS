@@ -1,4 +1,4 @@
-<article class="modal-movie-wrapper ">
+<article class="modal-movie-wrapper" id="{{id}}">
     <div class="card-poster-wrapper">
         <img src="https://image.tmdb.org/t/p/w1280{{poster_path}}" class="modal-movie-poster" />
     </div>
@@ -33,9 +33,9 @@
         <p class="modal-movie-about">About</p>
         <p class="modal-movie-descript">{{overview}}</p>
         <div class="modal-movie-button-wrapper">
-            <button data-name="watched" class="modal-movie-button modal-left-button" type="button">delete from
+            <button data-name="watched" class="modal-movie-button modal-left-button" type="button">add to
                 watched</button>
-            <button data-name="queue" class="modal-movie-button" type="button">delete from queue</button>
+            <button data-name="queue" class="modal-movie-button" type="button">add to queue</button>
         </div>
     </div>
 </article>

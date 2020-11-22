@@ -2,7 +2,7 @@ import './get-refs';
 import refs from './get-refs';
 import cardMovieTemplate from '../templates/modal-tmp.hbs';
 
-import { onQueueBtnClick, onWatchedBtnClick } from './localStorage.js';
+// import { onQueueBtnClick, onWatchedBtnClick } from './localStorage.js';
 
 const modalRefs = {
   lightbox: document.querySelector('.modal-movie-lightbox'),
@@ -81,5 +81,92 @@ function removeOldElement(element) {
     element.remove();
   }
 }
+
+
+//  local storage
+
+function onWatchedBtnClick() {
+ let id = document.querySelector('.modal-movie-wrapper').getAttribute('id')
+console.log(id);
+  const btnWatched = libraryRefs.toWatchedBtn
+ 
+  if (btnWatched.innerHTML === "add to watched") {
+    btnWatched.classList.add("button-is-active")
+    btnWatched.innerHTML = "delete from watched"
+    getFilmsWatched()
+    putFilmsWatched(id)
+
+
+  } else {
+    btnWatched.classList.remove("button-is-active")
+    btnWatched.innerHTML = "add to watched"
+    
+    }
+}
+
+function onQueueBtnClick(){
+ 
+  const toQueueBtn = libraryRefs.toQueueBtn
+ 
+  if (toQueueBtn.innerHTML === "add to queue") {
+    toQueueBtn.classList.add("button-is-active")
+    toQueueBtn.innerHTML = "delete from queue"
+      getFilmsQueue()
+    putFilmsQueue()
+  
+  } else {
+    toQueueBtn.classList.remove("button-is-active")
+    toQueueBtn.innerHTML = "add to queue"
+
+         
+    }
+}
+
+
+function  getFilmsWatched() {
+    const filmsLocalStorageWatched = localStorage.getItem("watched");
+        if (filmsLocalStorageWatched !== null) {
+          return JSON.parse(filmsLocalStorageWatched)  
+        }
+
+    return [];
+  }
+
+
+function getFilmsQueue() {
+    const filmsLocalStorageQueue = localStorage.getItem("queue");
+    if (filmsLocalStorageQueue !== null) {
+           return JSON.parse(filmsLocalStorageQueue)   
+    }
+    return []
+}
+
+  
+ function putFilmsWatched(id) {
+    let filmsW = getFilmsWatched();
+   const index = filmsW.indexOf(id)
+   console.log(index);
+    if (index === -1) {
+    console.log(filmsW.push(id) );   
+    } else {
+      filmsW.splice(index, 1);
+    }
+    
+   return localStorage.setItem('watched', JSON.stringify(filmsW))
+
+}
+   
+function putFilmsQueue(id) {
+    let filmsQueue = getFilmsQueue();
+    const index = filmsQueue.indexOf(id)
+    if (index === -1) {
+     filmsQueue.push(id)   
+    } filmsQueue.splice(index, 1);
+    
+   return localStorage.setItem('queue', JSON.stringify(filmsQueue))
+
+}
+
+putFilmsQueue('qqqqq')
 
 export default { fetchMovie, showMovieCard };
