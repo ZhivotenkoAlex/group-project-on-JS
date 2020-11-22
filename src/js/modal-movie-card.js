@@ -16,6 +16,7 @@ const modalRefs = {
 refs.filmContainer.addEventListener('click', showMovieCard);
 
 async function showMovieCard(event) {
+
   openCloseModal();
 
   modalRefs.overlayModal.insertAdjacentHTML(
@@ -37,7 +38,9 @@ async function showMovieCard(event) {
   // refs.toQueueBtn.addEventListener('click', onQueueBtnClick);
 
   // refs.filmContainer.addEventListener('click', onImgClick);
+
 }
+
 
 async function fetchMovie(id) {
   const response = await fetch(
@@ -76,3 +79,6 @@ function onOverlayClick(evt) {
 
   openCloseModal();
 }
+
+export default {fetchMovie, showMovieCard}
+
