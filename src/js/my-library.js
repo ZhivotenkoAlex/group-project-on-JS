@@ -1,4 +1,3 @@
-
 import ApiService from './apiService';
 import markupMovies from './renderMarkup';
 import localStorage from './localStorage.js'
@@ -13,10 +12,11 @@ const apiSearchServise = new ApiService();
 
 
 // повесить слушатели на ссылки
-refs.watchedLink.addEventListener('click', onWatchedLinkClick)
-refs.queueLink.addEventListener('click', onQueueLinkClick)
+refs.watchedLink.addEventListener('click', onWatchedLinkClick);
+refs.queueLink.addEventListener('click', onQueueLinkClick);
 
 function onWatchedLinkClick() {
+  refs.watchedLink.classList.add('link-is-active')
   const filmsWatchedIds = JSON.parse(localStorage.getItem("watched")).map(Number);
   
   if (filmsWatchedIds !== null) {
@@ -26,7 +26,8 @@ function onWatchedLinkClick() {
     };
   }
 }
-  let watchedMovies = [];
+
+let watchedMovies = [];
   
   function addWatchedMovie(r) {
     watchedMovies.push(r);
@@ -36,7 +37,8 @@ function onWatchedLinkClick() {
 
 
 function onQueueLinkClick() {
-  
+  refs.watchedLink.classList.remove('link-is-active')
+  refs.queueLink.classList.add('link-is-active')
   const filmsQueueIds = JSON.parse(localStorage.getItem("queue")).map(Number);
   if (filmsQueueIds !== null) {
     for (id of filmsQueueIds) {
@@ -46,7 +48,7 @@ function onQueueLinkClick() {
   }
 }
 
-  let moviesInQueue = [];
+let moviesInQueue = [];
   
   function addMovieinQueue(r) {
     moviesInQueue.push(r);
