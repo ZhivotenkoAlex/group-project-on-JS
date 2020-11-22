@@ -2,7 +2,7 @@ const API_KEY = '7e78d9d0b80a5a9938ce5aba09bf2c47';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const SEARCH_PATH = 'search/movie';
 const TRENDING_PATH = 'trending/movie/day';
-const ID_PATH = 'movie/'
+const ID_PATH = 'movie/';
 export default class ApiMovieService {
   constructor() {
     this.searchQuery = '';
@@ -12,18 +12,26 @@ export default class ApiMovieService {
     this.searchUrl = `${BASE_URL}${SEARCH_PATH}?api_key=${API_KEY}`;
     this.trendingUrl = `${BASE_URL}${TRENDING_PATH}?api_key=${API_KEY}`;
     this.movieIdUrl = `${BASE_URL}${ID_PATH}`;
-   
+
+    this.total_result = 0;
+    this.currentPage = this.page;
   }
 
   fetchMoviesId() {
-    return fetch(`${BASE_URL}${ID_PATH}${this.id}?api_key=${API_KEY}`).then(this.checkRequestSuccess);
+    return fetch(`${BASE_URL}${ID_PATH}${this.id}?api_key=${API_KEY}`).then(
+      this.checkRequestSuccess,
+    );
   }
 
   fetchMovies(url) {
     return fetch(`${url}`)
       .then(this.checkRequestSuccess)
-      .then(({ results }) => {
+      .then(({ results, total_results, page }) => {
+        this.currentPage = page;
         this.incrementPage();
+
+        this.setTotalResult(total_results);
+
         return results;
       });
   }
@@ -59,11 +67,11 @@ export default class ApiMovieService {
   }
 
   checkRequestSuccess(response) {
-    
     let message = 'Oops! Looks like something went wrong';
 
     if (response.status === 422) {
-      message = 'Search result failed. Please enter the correct movie title and try again.';
+      message =
+        'Search result failed. Please enter the correct movie title and try again.';
       throw new Error(message);
     } else if (response.ok === false || response.status === 404) {
       throw new Error(message);
@@ -80,6 +88,10 @@ export default class ApiMovieService {
     this.page = 1;
   }
 
+  getPage() {
+    return this.currentPage;
+  }
+
   get query() {
     return this.searchQuery;
   }
@@ -89,7 +101,7 @@ export default class ApiMovieService {
   }
 
   get search() {
-    return this.searchUrl + `&query=${this.searchQuery}&page=${this.page}`;
+    return this.searchUrl + `&page=${this.page}&query=${this.searchQuery}`;
   }
 
   get trending() {
@@ -102,5 +114,13 @@ export default class ApiMovieService {
 
   set id(newId) {
     this.movieId = newId;
+  }
+
+  get totalResult() {
+    return this.total_result;
+  }
+
+  setTotalResult(newValue) {
+    this.total_result = newValue;
   }
 }
