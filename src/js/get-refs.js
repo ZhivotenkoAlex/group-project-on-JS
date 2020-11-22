@@ -10,7 +10,8 @@ const refs = {
   searchErrorRef: document.querySelector('#search-error'),
   sectionMoviesRef: document.querySelector('#section-movies'),
   paginatorElRef: document.querySelector('.js-pagination'),
-  modal: document.querySelector('.modal')
+  modal: document.querySelector('.modal'),
+  noResults: document.querySelector('.no-results')
 };
 
 export default refs;

@@ -19,7 +19,7 @@ function onSearchMovies(e) {
   apiSearchServise.query = value;
 
   apiSearchServise.resetPage();
-  apiSearchServise.fetchMovies(apiSearchServise.search).then(numbersOfMovies);
+  apiSearchServise.showResult(apiSearchServise.search).then(numbersOfMovies);
 
   paginator(
     apiSearchServise.getPage(),
@@ -27,6 +27,10 @@ function onSearchMovies(e) {
     apiSearchServise.search,
   );
 }
+
+
+
+
 
 function numbersOfMovies(r) {
   // console.log(r);
@@ -40,3 +44,11 @@ function numbersOfMovies(r) {
     markupMovies(r);
   }
 }
+
+
+function showPopular(url) {
+  return apiMovieService.showResult(url).then(r => {
+    markupMovies(r);
+  });
+}
+

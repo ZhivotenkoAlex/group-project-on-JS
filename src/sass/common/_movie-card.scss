@@ -68,3 +68,31 @@
   background-color: $primaryOrangeColor;
   border-radius: 5px;
 }
+
+.no-results {
+  margin-top: calc((100vh - 230px - 110px) / 3);
+
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 2px;
+
+  color: rgba(0, 0, 0, 0.55);
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  user-select: none;
+}
+
+.no-results.visible {
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  overflow: auto;
+
+  user-select: inherit;
+}
