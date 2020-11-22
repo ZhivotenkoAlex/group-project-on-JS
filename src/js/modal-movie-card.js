@@ -80,3 +80,5 @@ function removeOldElement(element) {
     element.remove();
   }
 }
+
+export default { fetchMovie, showMovieCard };
