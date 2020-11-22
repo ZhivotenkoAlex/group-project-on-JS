@@ -16,6 +16,7 @@ async function clikPageNum(even) {
   //   console.log(even.target.nodeName);
   const pageEl = even.target;
   const urlPage = pageEl.dataset.url;
+  console.log('click for num:', urlPage);
   if (even.target.nodeName === 'A') {
     even.preventDefault();
 
@@ -58,5 +59,5 @@ function showPage(url) {
 async function paginationSet(url) {
   await showPage(url);
 
-  await paginator(apiMovieService.getPage(), apiMovieService.total_result, url);
+  paginator(apiMovieService.getPage(), apiMovieService.total_result, url);
 }
