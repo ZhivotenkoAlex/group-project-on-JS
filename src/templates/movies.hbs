@@ -25,6 +25,11 @@
             {{name}}{{/each}}
             &nbsp;|&nbsp;
             {{release_date}}
+
+            {{#if imdb_id}}
+            <span class="movie-popularity">{{vote_average}}</span>
+            {{/if}}
+
         <p>
     </div>
 </li>
