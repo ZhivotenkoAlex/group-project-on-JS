@@ -6,10 +6,8 @@ import libraryTpl from '../templates/movies.hbs';
 import commonRefs from './get-refs';
 // import localStorage from './localStorage.js'; modal-movie-card.js
 
-console.log();
-
 // новый экземпляр
-const apiSearchServise = new ApiService();
+//const apiSearchServise = new ApiService();
 
 // повесить слушатели на ссылки
 // refs.watchedLink.addEventListener('click', onWatchedLinkClick);
@@ -39,33 +37,58 @@ async function onWatchedLinkClick() {
   }
 }
 
-let watchedMovies = [];
-function addWatchedMovie(r) {
-  watchedMovies.push(r);
-  console.log(watchedMovies);
-  return watchedMovies;
-}
+async function onQueueLinkClick() {
+  const refs = {
+    libraryClick: document.querySelector('.librarry-filter'),
+    watchedLink: document.querySelector('.watched-link'),
+    queueLink: document.querySelector('.queue-link'),
+  };
 
-console.log(watchedMovies);
-
-function onQueueLinkClick() {
   refs.watchedLink.classList.remove('is-active');
   refs.queueLink.classList.add('is-active');
-  const filmsQueueIds = JSON.parse(localStorage.getItem('queue')).map(Number);
-  if (filmsQueueIds !== null) {
-    for (id of filmsQueueIds) {
-      apiSearchServise.id = id;
-      apiSearchServise.fetchMoviesId(addMovieinQueue).then(markupMovies);
+
+  const filmsInQueueIds = JSON.parse(localStorage.getItem('queue')).map(
+    Number,
+  );
+
+  const moviesInQueueList = [];
+
+  if (filmsInQueueIds !== null) {
+    for (const id of filmsInQueueIds) {
+      moviesInQueueList.push(await fetchMovie(id));
     }
+
+    markupMovies(moviesInQueueList);
   }
 }
 
-let moviesInQueue = [];
+//let watchedMovies = [];
+//function addWatchedMovie(r) {
+//  watchedMovies.push(r);
+//  console.log(watchedMovies);
+//  return watchedMovies;
+//}
 
-function addMovieinQueue(r) {
-  moviesInQueue.push(r);
-  return moviesInQueue;
-}
+//console.log(watchedMovies);
+
+//function onQueueLinkClick() {
+//  refs.watchedLink.classList.remove('is-active');
+//  refs.queueLink.classList.add('is-active');
+//  const filmsQueueIds = JSON.parse(localStorage.getItem('queue')).map(Number);
+//  if (filmsQueueIds !== null) {
+//    for (id of filmsQueueIds) {
+//      apiSearchServise.id = id;
+//      apiSearchServise.fetchMoviesId(addMovieinQueue).then(markupMovies);
+//    }
+//  }
+//}
+
+//let moviesInQueue = [];
+
+//function addMovieinQueue(r) {
+//  moviesInQueue.push(r);
+//  return moviesInQueue;
+//}
 
 //let a = [];
 
