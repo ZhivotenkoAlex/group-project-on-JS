@@ -85,11 +85,19 @@ function removeOldElement(element) {
 //  local storage
 
 function onWatchedBtnClick() {
-     saveW();
+  let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
+  console.log(id);
+  console.log('watched');
+    saveW();
+   
 }
 
 function onQueueBtnClick() {
-  saveQ();
+  
+
+    saveQ();
+   
+
 }
 
 function saveW() {
@@ -115,7 +123,7 @@ function saveW() {
 
     btnWatched.classList.remove("button-is-active")
     btnWatched.innerHTML = "delete from watched"
-  
+    console.log("добавил");
 
 
   }  else {
@@ -123,7 +131,7 @@ function saveW() {
 
     btnWatched.classList.add("button-is-active")
     btnWatched.innerHTML = "add to watched"
-   
+    console.log('удалил');
   }
 
 
@@ -170,5 +178,41 @@ function saveQ() {
 }
 
 
+function delQ() {
+  let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
+  let oldId = JSON.parse(localStorage.getItem('queue'));
+  const i = oldId.indexOf(newId);
+
+  if (i) {
+    console.log(i);
+    oldId.splice(i, 1);
+    console.log('удалил');
+  }
+}
+
+export { fetchMovie, showMovieCard };
+
+function viewW() {
+  const vievWL = localStorage.getItem("watched")
+
+  if (vievWL !== null) {
+    const parseWatched = JSON.parse(localStorage.getItem("watched"))
+    console.log(parseWatched);
+
+    const id = parseWatched.map((id)  => {
+      Number(id)
+      console.log(id);
+    
+  //  сделать рендер карточки фильма по айди
+     
+
+   })
+  }
+  
+}
+
+viewW()
+
+export default { fetchMovie, showMovieCard };
 
 
