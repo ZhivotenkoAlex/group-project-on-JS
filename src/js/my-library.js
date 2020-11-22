@@ -13,9 +13,10 @@ const refs = {
   watchedLink: document.querySelector('[data-set="watched-link"]'),
   queueLink: document.querySelector('[data-set="queue-link"]')  
 }
-
+// новый экземпляр
 const apiSearchServise = new ApiService();
 
+// повесить слушатели на ссылки 
 refs.watchedLink.addEventListener('click', onWatchedLinkClick)
 //refs.watchedLink.addEventListener('click', )
 //refs.queueLink.addEventListener('click', onQueueLinkClick)
@@ -52,6 +53,14 @@ function onWatchedLinkClick() {
     apiSearchServise.id = 643882;
     apiSearchServise.fetchMoviesId().then(b).then(markupMovies)
 }
+
+
+// let watchedMovies = [];
+// function addWatchedMovie(r) {
+//  watchedMovies.push(r)
+//  console.log(watchedMovies);
+//  return watchedMovies;
+//}
 
 function b(r) {
     a.push(r);
