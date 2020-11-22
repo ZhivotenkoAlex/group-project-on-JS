@@ -23,6 +23,4 @@ import './js/searchGenres.js';
 import './js/switch-page.js';
 
 import './js/modal-movie-card.js';
-
-
-
+import './js/gallery.js';
