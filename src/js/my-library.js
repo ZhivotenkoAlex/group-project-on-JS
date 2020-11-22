@@ -20,6 +20,7 @@ async function onWatchedLinkClick() {
     queueLink: document.querySelector('.queue-link'),
   };
 
+  refs.queueLink.classList.remove('is-active');
   refs.watchedLink.classList.add('is-active');
   const filmsWatchedIds = JSON.parse(localStorage.getItem('watched')).map(
     Number,
