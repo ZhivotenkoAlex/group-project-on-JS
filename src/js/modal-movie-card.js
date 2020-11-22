@@ -88,6 +88,7 @@ function onWatchedBtnClick() {
   let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
   console.log(id);
   console.log('watched');
+
     saveW();
    
 }
@@ -97,6 +98,7 @@ function onQueueBtnClick() {
 
     saveQ();
    
+
 
 }
 
