@@ -87,13 +87,15 @@ function removeOldElement(element) {
 
 function onWatchedBtnClick() {
  let id = document.querySelector('.modal-movie-wrapper').getAttribute('id')
-console.log(id);
+  console.log(id);
+  console.log('watched');
   const btnWatched = libraryRefs.toWatchedBtn
  
   if (btnWatched.innerHTML === "add to watched") {
+     saveW()
     btnWatched.classList.add("button-is-active")
     btnWatched.innerHTML = "delete from watched"
-    saveW()
+   
   
 
   } else {
@@ -172,6 +174,7 @@ function saveQ() {
   localStorage.setItem("queue", JSON.stringify(oldId))
 
 }
+
 
 
 export default { fetchMovie, showMovieCard };
