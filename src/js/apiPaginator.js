@@ -13,14 +13,14 @@ export default class ApiPaginator {
     this.previous = this.current - 1;
     this.next = this.current + 1;
     this.range = this.getRange();
-    // console.log(this);
+    
     return this.template(this);
   }
 
   getRange() {
     const totalPage = Math.ceil(this.totalPage / this.perPage);
 
-    console.log('prelink in getRange ', this.prelink);
+    
 
     const prelinkTemAll = this.prelink.split('&');
     let prelinkTem = this.prelink.split('&')[0];
@@ -28,7 +28,7 @@ export default class ApiPaginator {
     this.prelink = prelinkTem;
 
     if (prelinkTemAll.length === 3) {
-      console.log('3 lenght linc parameter');
+      
       const q = prelinkTemAll.filter(word => word.includes('query'))[0];
       if (q) {
         prelinkTem = prelinkTem + '&' + q;
@@ -36,8 +36,7 @@ export default class ApiPaginator {
       }
     }
 
-    console.log(prelinkTemAll);
-    console.log(prelinkTem);
+ 
 
     if (this.current > totalPage) {
       return [{ num: 1, active: true, prelink: prelinkTem }];

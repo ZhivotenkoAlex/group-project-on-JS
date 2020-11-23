@@ -2,6 +2,7 @@ import './get-refs';
 import refs from './get-refs';
 import cardMovieTemplate from '../templates/modal-tmp.hbs';
 
+
 // import { onQueueBtnClick, onWatchedBtnClick } from './localStorage.js';
 
 const modalRefs = {
@@ -43,6 +44,7 @@ async function showMovieCard(event) {
 
 async function fetchMovie(id) {
   const response = await fetch(
+
     `https://api.themoviedb.org/3/movie/${id}?api_key=7e78d9d0b80a5a9938ce5aba09bf2c47`,
   );
   return await response.json();
@@ -97,8 +99,7 @@ function removeOldElement(element) {
 
 function onWatchedBtnClick() {
   let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
-  console.log(id);
-  console.log('watched');
+
 
     saveW();
    
@@ -115,7 +116,7 @@ function onQueueBtnClick() {
 
 function saveW() {
   let newId = document.querySelector('.modal-movie-wrapper').getAttribute('id');
-  console.log(newId);
+ 
 
   const btnWatched = libraryRefs.toWatchedBtn
   
@@ -125,7 +126,7 @@ function saveW() {
   }
 
   let oldId = JSON.parse(localStorage.getItem('watched'));
-  console.log('watched',  oldId);
+  
 
    const i = oldId.indexOf(newId)
   
@@ -136,7 +137,7 @@ function saveW() {
 
     btnWatched.classList.remove("button-is-active")
     btnWatched.innerHTML = "delete from watched"
-    console.log("добавил");
+    
 
 
   }  else {
@@ -144,7 +145,7 @@ function saveW() {
 
     btnWatched.classList.add("button-is-active")
     btnWatched.innerHTML = "add to watched"
-    console.log('удалил');
+  
   }
 
 
@@ -180,10 +181,6 @@ function saveQ() {
 
   }
 
-  //   else {
-  //   oldId.splice(i, 1);
-  //   console.log('удалил');
-  // }
 
 
   // вывести в LS
@@ -197,9 +194,9 @@ function delQ() {
   const i = oldId.indexOf(newId);
 
   if (i) {
-    console.log(i);
+ 
     oldId.splice(i, 1);
-    console.log('удалил');
+  
   }
 }
 
@@ -210,11 +207,11 @@ function viewW() {
 
   if (vievWL !== null) {
     const parseWatched = JSON.parse(localStorage.getItem("watched"))
-    console.log(parseWatched);
+
 
     const id = parseWatched.map((id)  => {
       Number(id)
-      console.log(id);
+ 
     
   //  сделать рендер карточки фильма по айди
      
@@ -237,10 +234,6 @@ function b() {
   const q = JSON.parse(localStorage.getItem('queue'));
    
   let id = document.querySelector('.modal-movie-wrapper').getAttribute('id');
-
-  console.log(w);
-  console.log(q);
-
 
   if (w === null || !w.includes(id)) {
     watched.classList.remove('button-is-active');

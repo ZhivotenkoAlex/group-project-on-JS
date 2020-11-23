@@ -86,3 +86,7 @@
 .paginator .item:not(:last-child) {
   margin-right: 2px;
 }
+
+.js-pagination.invisible {
+  opacity: 0;
+}

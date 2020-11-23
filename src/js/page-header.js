@@ -5,8 +5,6 @@ refs.logoRef.addEventListener('click', toHome);
 refs.homeRef.addEventListener('click', toHome);
 refs.libraryRef.addEventListener('click', toLibrary);
 
-console.log(refs);
-
 function toHome() {
   refs.paginatorElRef.classList.remove('is-hidden-pagination');
 

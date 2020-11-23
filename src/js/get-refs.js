@@ -11,7 +11,9 @@ const refs = {
   sectionMoviesRef: document.querySelector('#section-movies'),
   paginatorElRef: document.querySelector('.js-pagination'),
   modal: document.querySelector('.modal'),
-  noResults: document.querySelector('.no-results')
+  noResults: document.querySelector('.no-results'),
+  main: document.querySelector('main'),
+  spinner: document.querySelector('.loader'),
 };
 
 export default refs;

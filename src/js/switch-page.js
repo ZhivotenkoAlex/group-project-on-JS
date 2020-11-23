@@ -13,10 +13,9 @@ const apiMovieService = new ApiMovieService();
 refs.paginatorElRef.addEventListener('click', clikPageNum);
 
 async function clikPageNum(even) {
-    //   console.log(even.target.nodeName);
     const pageEl = even.target;
     const urlPage = pageEl.dataset.url;
-    console.log('click for num:', urlPage);
+   
     if (even.target.nodeName === 'A') {
         even.preventDefault();
 
@@ -66,4 +65,3 @@ async function paginationSet(url) {
 
     paginator(apiMovieService.getPage(), apiMovieService.total_result, url);
 }
-console.log("test");

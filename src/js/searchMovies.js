@@ -19,8 +19,15 @@ function onSearchMovies(e) {
   apiSearchServise.query = value;
 
   apiSearchServise.resetPage();
-  apiSearchServise.showResult(apiSearchServise.search).then(numbersOfMovies);
 
+  refs.filmContainer.innerHTML = '';
+
+  refs.paginatorElRef.classList.add('invisible');
+  refs.main.classList.add('spinner-is-open');
+  refs.spinner.classList.add('is-open');
+
+  apiSearchServise.showResult(apiSearchServise.search).then(numbersOfMovies);
+ 
   paginator(
     apiSearchServise.getPage(),
     apiSearchServise.total_result,
@@ -28,27 +35,23 @@ function onSearchMovies(e) {
   );
 }
 
-
-
-
-
 function numbersOfMovies(r) {
-  // console.log(r);
+ 
   refs.searchErrorRef.classList.add('is-hidden');
 
   if (r.length === 0) {
     refs.searchErrorRef.classList.remove('is-hidden');
-  } else if (r.length === 1) {
-    console.log('рендер 1 карточки');
   } else {
+    setTimeout(() => {
+    refs.main.classList.remove('spinner-is-open');
+    refs.spinner.classList.remove('is-open');
+
+
     markupMovies(r);
+    refs.paginatorElRef.classList.remove('invisible');
+  
+    }, 1000);
   }
 }
 
-
-function showPopular(url) {
-  return apiMovieService.showResult(url).then(r => {
-    markupMovies(r);
-  });
-}
 

@@ -17,6 +17,6 @@ export default function setPaginatorStart(currentPage, totalPages, url = '/&') {
     templateTmp: totalPages > PER_PAGE * 5 ? pagTmp : pagTmp20,
     perPage: PER_PAGE,
   });
-  // console.log(url);
+  
   refs.paginatorElRef.innerHTML = paginator.render();
 }
