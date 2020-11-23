@@ -5,9 +5,10 @@
 @import './utils/container';
 
 @import './utils/is-hidden';
+@import './utils/visually-hidden';
 
 // Header
-@import './common/_page-header.scss';
+@import './common/page-header.scss';
 
 // One movie card
 @import './common/movie-card';
@@ -15,15 +16,17 @@
 // Modal movie card
 @import './common/modal-movie-card';
 
-//paginator
+//Paginator
 @import './common/paginator';
 
 // Footer
 @import './common/page-footer';
 
-@import './utils/visually-hidden';
-
-@import './common/_page-header.scss';
+// Movies
 @import './common/hbs-movies';
 
+// Spinner
 @import './common/spinner.scss';
+
+// Modal team
+@import './common/modal-team';
