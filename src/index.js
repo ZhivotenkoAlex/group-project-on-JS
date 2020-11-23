@@ -7,4 +7,5 @@ import './js/searchMovies.js';
 import './js/switch-page.js';
 import './js/modal-movie-card.js';
 import './js/my-library.js';
+import './js/command-modal.js';
 
